@@ -25,11 +25,15 @@ export class MainPageComponent {
 
   onNewCharacter(character :  Character):void{
 
-    console.log('main page');
-    console.log(character);
+    // console.log('main page');
+    // console.log(character);
     
-    
+    this.Characters.push(character);
+  }
 
+
+  onDeleteCharacter(index:number){
+   this.Characters.splice(index) 
   }
 
 }
