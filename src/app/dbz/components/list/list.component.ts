@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Character } from '../../interfaces/character.interface';
+import { DbzService } from '../../services/dbz.service';
 
 @Component({
   selector: 'dbz-list',
@@ -7,6 +8,9 @@ import { Character } from '../../interfaces/character.interface';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent {
+  constructor ( ){
+
+  }
   @Input()
   public characterList :Character[]= [
     {
@@ -15,10 +19,12 @@ export class ListComponent {
     }
   ]
   @Output()
-  public onDelete: EventEmitter<number>= new EventEmitter();
+  public onDelete: EventEmitter<string>= new EventEmitter();
   // 
-  onDeleteCharacter(index:number):void{
-    console.log({index});
-    this.onDelete.emit(index);
+  DeleteCharacterById(id?:string):void{
+    if(!id) return;
+    console.log({id});
+
+    this.onDelete.emit(id);
   }
 }

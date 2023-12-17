@@ -10,9 +10,16 @@ import { Component } from "@angular/core";
 
 export class MainPageComponent {
 
- constructor (public DbzService:DbzService ){
+ constructor (private DbzService:DbzService ){}
+
+ get characters():Character[]{
+  return [...this.DbzService.characters];
+}
  
-
+ onDeleteCharacter(id:string):void {
+    this.DbzService.DeleteCharacterById(id);
  }
-
+ onNewCharacter(character: Character):void{
+  this.DbzService.addCharacter(character);
+ }
 }
